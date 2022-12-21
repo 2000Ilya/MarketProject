@@ -7,4 +7,9 @@
   font-size: 2rem;
   line-height: 2.3rem;
   color: #ffffff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(128, 1, 1, 0.6);
 }
