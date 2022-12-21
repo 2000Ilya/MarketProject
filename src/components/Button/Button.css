@@ -4,4 +4,7 @@
   background: #9f2727;
   box-shadow: 0.3rem 0.5rem 1.3rem rgba(0, 0, 0, 0.25);
   border-radius: 3rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  color: #ffffff;
 }
