@@ -3,11 +3,11 @@ import TabArrow from "../../Icons/TabArrow";
 
 import "./Tab.css";
 
-function Tab({ name }) {
+function Tab({ name, isSelected }) {
   return (
     <div className="tab">
       <span>{name}</span>
-      {<TabArrow />}
+      {isSelected && <TabArrow />}
     </div>
   );
 }
