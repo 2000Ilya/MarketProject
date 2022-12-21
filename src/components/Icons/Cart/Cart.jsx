@@ -1,10 +1,13 @@
 import React from "react";
 
+import "./Cart.css";
+
 function Cart() {
   return (
     <svg
-      width="40"
-      height="34"
+      className="cart-icon"
+      // width="40"
+      // height="34"
       viewBox="0 0 40 34"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

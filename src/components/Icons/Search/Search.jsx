@@ -1,10 +1,13 @@
 import React from "react";
 
+import "./SearchIcon.css";
+
 function Search() {
   return (
     <svg
-      width="20"
-      height="23"
+      className="search-icon"
+      // width="20"
+      // height="23"
       viewBox="0 0 20 23"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -8,7 +8,16 @@
 .header {
   width: 116rem;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .header__controls-group {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  align-items: center;
 }

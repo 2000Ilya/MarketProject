@@ -42,3 +42,45 @@ a {
 h1 {
   margin: 0;
 }
+
+.flex-center-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 5px;
+  }
+}
+
+@media screen and (max-width: 1080px) and (min-width: 801px) {
+  html {
+    font-size: 6px;
+  }
+}
+
+@media screen and (max-width: 1360px) and (min-width: 1081px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media screen and (max-width: 1640px) and (min-width: 1361px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 1919px) and (min-width: 1641px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 10px;
+  }
+}

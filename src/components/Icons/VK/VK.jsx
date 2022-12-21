@@ -1,10 +1,13 @@
 import React from "react";
 
+import "./VK.css";
+
 function VK() {
   return (
     <svg
-      width="20"
-      height="13"
+      className="vk-icon"
+      // width="20"
+      // height="13"
       viewBox="0 0 20 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

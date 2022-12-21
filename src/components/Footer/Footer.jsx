@@ -1,23 +1,25 @@
 import React from "react";
-import Logo from "../Icons/Logo";
-import TG from "../Icons/TG";
-import VK from "../Icons/VK";
+import Logo from "../Icons/Logo/Logo";
+import TG from "../Icons/TG/TG";
+import VK from "../Icons/VK/VK";
 
 import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="footer-container">
+    <footer className="footer-container flex-center-middle">
       <div className="footer">
-        <div className="footer__categories-group">
-          <div className="footer__header">{"Категории"}</div>
-          <div className="footer__category">{"Вино"}</div>
-          <div className="footer__category">{"Шампанское и игристое"}</div>
-          <div className="footer__category">{"Крепкий алкоголь"}</div>
-          <div className="footer__category">{"Пиво"}</div>
+        <div className="footer__categories">
+          <div className="footer__title">{"Категории"}</div>
+          <div className="footer__categories-group">
+            <div className="footer__category">{"Вино"}</div>
+            <div className="footer__category">{"Шампанское и игристое"}</div>
+            <div className="footer__category">{"Крепкий алкоголь"}</div>
+            <div className="footer__category">{"Пиво"}</div>
+          </div>
         </div>
         <div className="footer__contacts-group">
-          <div className="footer__header">{"Контакты"}</div>
+          <div className="footer__title">{"Контакты"}</div>
           <div className="footer__contact-phone">
             {"+7 (921) - 996- 75 - 26"}
           </div>

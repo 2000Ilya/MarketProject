@@ -1,10 +1,13 @@
 import React from "react";
 
+import "./Logo.css";
+
 function Logo() {
   return (
     <svg
-      width="60"
-      height="63"
+      className="logo-icon"
+      // width="60"
+      // height="63"
       viewBox="0 0 60 63"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
