@@ -5,10 +5,13 @@ import ControlQuantity from "./ControlQuantity/ControlQuantity";
 import "./CartItem.css";
 import { priceStringBuilder } from "../../helpers/stringBuilders";
 
-function CartItem({ name, imgSrc, price, quantity = 1, parameters }) {
+function CartItem({ name, imgSrc, price, quantity = 1, parameters, category }) {
   return (
     <div className="cart-item__container">
-      <img className="cart-item__image" src={imgSrc} />
+      <img
+        className="cart-item__image"
+        src={`assets/icons/${category}/${imgSrc}`}
+      />
       <div className="cart-item__content">
         <div className="cart-item__name">{name}</div>
         <div className="cart-item__content__bottom-group">

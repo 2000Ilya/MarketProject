@@ -12,7 +12,9 @@ function Header() {
   return (
     <header className="header-container flex-center-middle">
       <div className="header">
-        <Logo />
+        <Link to={"/"}>
+          <Logo />
+        </Link>
         <NavBar />
         <div className="header__controls-group">
           <Link to={"/cart"}>
