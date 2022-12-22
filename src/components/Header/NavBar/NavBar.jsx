@@ -10,7 +10,9 @@ function NavBar() {
       <VerticalLine />
       <Link className="nav-bar__section-name">{"СДЕЛАТЬ ЗАКАЗ"}</Link>
       <VerticalLine />
-      <Link className="nav-bar__section-name">{"КАТАЛОГ"}</Link>
+      <Link to={"/"} className="nav-bar__section-name">
+        {"КАТАЛОГ"}
+      </Link>
       <VerticalLine />
       <Link className="nav-bar__section-name">{"КОНТАКТЫ"}</Link>
       <VerticalLine />

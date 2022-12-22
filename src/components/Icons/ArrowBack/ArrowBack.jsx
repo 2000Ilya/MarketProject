@@ -1,10 +1,13 @@
 import React from "react";
 
+import "./ArrowBack.css";
+
 function ArrowBack() {
   return (
     <svg
-      width="25"
-      height="8"
+      className="arrow-back-icon"
+      // width="25"
+      // height="8"
       viewBox="0 0 25 8"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

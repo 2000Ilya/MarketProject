@@ -1,30 +1,41 @@
 import React from "react";
-import ProductItem from "../../components/ProductItem/ProductItem";
+import CatalogSection from "../../components/CatalogSection/CatalogSection";
+import Tabs from "../../components/Tabs/Tabs";
+import products from "../../products";
+
+import "./MainPage.css";
 
 // const products = [{name:, imgSrc:, price:, salePrice:, parameters:{country:,type:,toxicity:,volume:}}]
-const products = [
-  {
-    name: "Herederos del Marques de Riscal Sauvignon DO, 0.75 л",
-    imgSrc: "",
-    price: "2601 р.",
-    salePrice: "2890 р.",
-    parameters: {
-      country: "Испания",
-      type: "Белое",
-      toxicity: "13%",
-      volume: "0.75 л",
-    },
-  },
-];
 
 function MainPage() {
   return (
-    <>
-      <div>MainPage</div>
-      {products.map((product, index) => (
-        <ProductItem {...product} key={index} />
-      ))}
-    </>
+    <div className="main-page">
+      <Tabs />
+      <CatalogSection
+        sectionName={"Вино"}
+        sectionProducts={products.filter(
+          (product) => product.category === "wine"
+        )}
+      />
+      <CatalogSection
+        sectionName={"Шампанское и игристое"}
+        sectionProducts={products.filter(
+          (product) => product.category === "champagne"
+        )}
+      />
+      <CatalogSection
+        sectionName={"Крепкий алкоголь"}
+        sectionProducts={products.filter(
+          (product) => product.category === "strong"
+        )}
+      />
+      <CatalogSection
+        sectionName={"Пиво"}
+        sectionProducts={products.filter(
+          (product) => product.category === "beer"
+        )}
+      />
+    </div>
   );
 }
 

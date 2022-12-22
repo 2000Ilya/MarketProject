@@ -1,10 +1,13 @@
 import React from "react";
 
+import "./TabArrow.css";
+
 function TabArrow() {
   return (
     <svg
-      width="130"
-      height="5"
+      className="tab-arrow-icon"
+      // width="130"
+      // height="5"
       viewBox="0 0 130 5"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

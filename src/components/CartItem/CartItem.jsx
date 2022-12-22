@@ -3,14 +3,15 @@ import Parameter from "../Parameter/Parameter";
 import ControlQuantity from "./ControlQuantity/ControlQuantity";
 
 import "./CartItem.css";
+import { priceStringBuilder } from "../../helpers/stringBuilders";
 
-function CartItem({ name, imgSrc, price, quantity, parameters }) {
+function CartItem({ name, imgSrc, price, quantity = 1, parameters }) {
   return (
     <div className="cart-item__container">
       <img className="cart-item__image" src={imgSrc} />
       <div className="cart-item__content">
         <div className="cart-item__name">{name}</div>
-        <div className="cart-item__content__bottom-name">
+        <div className="cart-item__content__bottom-group">
           <div className="cart-item__parameter-container">
             <div className="cart-item__parameter-container__upper-group">
               <Parameter name={"Страна"} value={parameters.country} />
@@ -22,9 +23,11 @@ function CartItem({ name, imgSrc, price, quantity, parameters }) {
             </div>
           </div>
           <div className="cart-item__cost-container">
-            <div className="cart-item__price">{price}</div>
+            <div className="cart-item__price">{priceStringBuilder(price)}</div>
             <ControlQuantity />
-            <div className="cart-item__price">{price * quantity}</div>
+            <div className="cart-item__price">
+              {priceStringBuilder(price * quantity)}
+            </div>
           </div>
         </div>
       </div>

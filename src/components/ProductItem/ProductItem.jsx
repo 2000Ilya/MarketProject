@@ -1,11 +1,12 @@
 import React from "react";
+import { priceStringBuilder } from "../../helpers/stringBuilders";
 import Button from "../Button/Button";
 import Like from "../Icons/Like/Like";
 import Parameter from "../Parameter/Parameter";
 
 import "./ProductItem.css";
 
-function ProductItem({ name, imgSrc, price, salePrice, parameters }) {
+function ProductItem({ name, imgSrc, price, salePrice, parameters, category }) {
   return (
     <div className="product-item__container">
       <div className="product-item__top-group">
@@ -13,7 +14,10 @@ function ProductItem({ name, imgSrc, price, salePrice, parameters }) {
         <Like fill={"#800101"} />
       </div>
       <div className="product-item__mid-group">
-        <img className="product-item__image" src={imgSrc} />
+        <img
+          className="product-item__image"
+          src={`assets/icons/${category}/${imgSrc}`}
+        />
         <div className="product-item__parameter-container">
           <Parameter name={"Страна"} value={parameters.country} />
           <Parameter name={"Тип"} value={parameters.type} />
@@ -24,9 +28,11 @@ function ProductItem({ name, imgSrc, price, salePrice, parameters }) {
         </div>
       </div>
       <div className="product-item__price">
-        <span>{price}</span>
+        <span>{priceStringBuilder(price)}</span>
         {salePrice && (
-          <span className="product-item__price-sale">{salePrice}</span>
+          <span className="product-item__price-sale">
+            {priceStringBuilder(salePrice)}
+          </span>
         )}
       </div>
       <div className="product-item__button-container">

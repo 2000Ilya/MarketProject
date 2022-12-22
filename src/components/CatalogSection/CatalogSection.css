@@ -1,0 +1,25 @@
+.catalog-section {
+  width: 116rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 6rem;
+}
+
+.catalog-section__title {
+  font-size: 3.2rem;
+  line-height: 3.8rem;
+  color: #800101;
+}
+
+.catalog-section__products-group {
+  display: flex;
+  flex-direction: row;
+  gap: 4.1rem;
+}
+
+.catalog-section__catalog-link {
+  font-size: 2rem;
+  line-height: 2.3rem;
+  color: #800101;
+}

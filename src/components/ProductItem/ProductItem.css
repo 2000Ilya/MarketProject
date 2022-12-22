@@ -35,6 +35,7 @@
 }
 
 .product-item__image {
+  width: 5.4rem;
 }
 
 .product-item__parameter-container {

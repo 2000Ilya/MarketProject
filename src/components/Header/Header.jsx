@@ -6,6 +6,7 @@ import Avatar from "../Icons/Avatar/Avatar";
 import Logo from "../Icons/Logo/Logo";
 
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -14,7 +15,9 @@ function Header() {
         <Logo />
         <NavBar />
         <div className="header__controls-group">
-          <Cart />
+          <Link to={"/cart"}>
+            <Cart />
+          </Link>
           <Like fill={"#ffffff"} />
           <Avatar />
         </div>

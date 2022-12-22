@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArrowBack from "../Icons/ArrowBack";
+import ArrowBack from "../Icons/ArrowBack/ArrowBack";
 
 import "./NavBack.css";
 
-function NavBack() {
+function NavBack({ text, linkTo }) {
   return (
-    <Link className="nav-back">
+    <Link to={linkTo} className="nav-back">
       <ArrowBack />
+      <span>{text}</span>
     </Link>
   );
 }
