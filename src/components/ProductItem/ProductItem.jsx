@@ -28,7 +28,7 @@ function ProductItem({
         <div className="product-item__mid-group">
           <img
             className="product-item__image"
-            src={`MarketProject/assets/icons/${category}/${imgSrc}`}
+            src={`/MarketProject/assets/icons/${category}/${imgSrc}`}
           />
           <div className="product-item__parameter-container">
             <Parameter name={"Страна"} value={parameters.country} />

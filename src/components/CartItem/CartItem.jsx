@@ -19,7 +19,7 @@ function CartItem({
     <div className="cart-item__container">
       <img
         className="cart-item__image"
-        src={`MarketProject/assets/icons/${category}/${imgSrc}`}
+        src={`/MarketProject/assets/icons/${category}/${imgSrc}`}
       />
       <div className="cart-item__content">
         <div className="cart-item__name">{name}</div>
