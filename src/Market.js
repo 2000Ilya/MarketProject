@@ -1,10 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import marketStore from "./store";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import CartPage from "./pages/CartPage/CartPage";
 import MainPage from "./pages/MainPage/MainPage";
 import OrderPage from "./pages/OrderPage/OrderPage";
+import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 
 import "./Market.css";
 
@@ -12,14 +14,20 @@ const Market = () => {
   return (
     <Router>
       <div className="market">
-        <Header />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          {/* </Route> */}
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/order" element={<OrderPage />} />
-        </Routes>
-        <Footer />
+        <div className="market__top-group">
+          <Header store={marketStore} />
+          <Routes>
+            <Route path="/" element={<MainPage store={marketStore} />} />
+            <Route
+              path="/catalog"
+              element={<CatalogPage store={marketStore} />}
+            />
+            {/* </Route> */}
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/order" element={<OrderPage />} />
+          </Routes>
+        </div>
+        <Footer store={marketStore} />
       </div>
     </Router>
   );

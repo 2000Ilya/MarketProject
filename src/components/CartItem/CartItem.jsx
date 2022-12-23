@@ -10,7 +10,7 @@ function CartItem({ name, imgSrc, price, quantity = 1, parameters, category }) {
     <div className="cart-item__container">
       <img
         className="cart-item__image"
-        src={`assets/icons/${category}/${imgSrc}`}
+        src={`MarketProject/assets/icons/${category}/${imgSrc}`}
       />
       <div className="cart-item__content">
         <div className="cart-item__name">{name}</div>
@@ -27,7 +27,7 @@ function CartItem({ name, imgSrc, price, quantity = 1, parameters, category }) {
           </div>
           <div className="cart-item__cost-container">
             <div className="cart-item__price">{priceStringBuilder(price)}</div>
-            <ControlQuantity />
+            <ControlQuantity quantity={quantity} />
             <div className="cart-item__price">
               {priceStringBuilder(price * quantity)}
             </div>

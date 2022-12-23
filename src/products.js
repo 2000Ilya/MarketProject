@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     name: "Herederos del Marques de Riscal Sauvignon DO, 0.75 л",
     imgSrc: "wine1.png",
     price: 2601,
@@ -13,6 +14,7 @@ export default [
     },
   },
   {
+    id: 2,
     name: "Domaine de l'Horizon, Mar y Muntanya IGP, 2018",
     imgSrc: "wine2.png",
     price: 2974,
@@ -26,6 +28,7 @@ export default [
     },
   },
   {
+    id: 3,
     name: "Вино Гевюрцтраминер  бел. п/сл. 0,75л. 12,5%",
     imgSrc: "wine3.png",
     price: 3137,
@@ -39,6 +42,7 @@ export default [
     },
   },
   {
+    id: 4,
     name: "Charles Simon Brut Supreme, 0.75 л",
     imgSrc: "champagne1.png",
     price: 3690,
@@ -52,6 +56,7 @@ export default [
     },
   },
   {
+    id: 5,
     name: "Masachs, Cava Brut",
     imgSrc: "champagne2.png",
     price: 1395,
@@ -65,6 +70,7 @@ export default [
     },
   },
   {
+    id: 6,
     name: "Reguta, Falconello Ribolla Gialla Brut, 0.75 л",
     imgSrc: "champagne3.png",
     price: 851,
@@ -78,6 +84,7 @@ export default [
     },
   },
   {
+    id: 7,
     name: "Neft, black barrel, 0.7 л",
     imgSrc: "strong1.png",
     price: 3600,
@@ -91,6 +98,7 @@ export default [
     },
   },
   {
+    id: 8,
     name: "Прасковейский Ставрополь КВ, 0.5 л",
     imgSrc: "strong2.png",
     price: 1816,
@@ -104,6 +112,7 @@ export default [
     },
   },
   {
+    id: 9,
     name: "Tatratea Coconut, 0.7 л",
     imgSrc: "strong3.png",
     price: 2745,
@@ -117,6 +126,7 @@ export default [
     },
   },
   {
+    id: 10,
     name: "Corona Extra, 0.355 л",
     imgSrc: "beer1.png",
     price: 154,
@@ -130,6 +140,7 @@ export default [
     },
   },
   {
+    id: 11,
     name: "Tuborg Green, 0.48 л",
     imgSrc: "beer2.png",
     price: 110,
@@ -143,6 +154,7 @@ export default [
     },
   },
   {
+    id: 12,
     name: "Пиво Леффе Блонд 0,33л. 6,6%",
     imgSrc: "beer3.png",
     price: 235,

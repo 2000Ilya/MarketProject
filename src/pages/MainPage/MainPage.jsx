@@ -1,42 +1,32 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import CatalogSection from "../../components/CatalogSection/CatalogSection";
 import Tabs from "../../components/Tabs/Tabs";
-import products from "../../products";
+import { Catalog } from "../CatalogPage/CatalogPage";
+import { categoryToSectionNameConverter } from "../../helpers/catalogSectionHelper";
 
 import "./MainPage.css";
 
-// const products = [{name:, imgSrc:, price:, salePrice:, parameters:{country:,type:,toxicity:,volume:}}]
-
-function MainPage() {
+function MainPage({ store }) {
   return (
     <div className="main-page">
-      <Tabs />
-      <CatalogSection
-        sectionName={"Вино"}
-        sectionProducts={products.filter(
-          (product) => product.category === "wine"
-        )}
+      <Tabs
+        changeCategory={(category) => store.setCategory(category)}
+        changeSearchName={(searchName) => store.changeSearchName(searchName)}
+        searchName={store.searchName}
       />
-      <CatalogSection
-        sectionName={"Шампанское и игристое"}
-        sectionProducts={products.filter(
-          (product) => product.category === "champagne"
-        )}
-      />
-      <CatalogSection
-        sectionName={"Крепкий алкоголь"}
-        sectionProducts={products.filter(
-          (product) => product.category === "strong"
-        )}
-      />
-      <CatalogSection
-        sectionName={"Пиво"}
-        sectionProducts={products.filter(
-          (product) => product.category === "beer"
-        )}
-      />
+      {store.searchName && store.searchName.length > 0 ? (
+        <Catalog products={store.productsFiltered} />
+      ) : (
+        <CatalogSection
+          sectionName={categoryToSectionNameConverter(store.category)}
+          sectionProducts={store.products.filter(
+            (product) => product.category === store.category
+          )}
+        />
+      )}
     </div>
   );
 }
 
-export default MainPage;
+export default observer(MainPage);

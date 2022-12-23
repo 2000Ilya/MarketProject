@@ -1,21 +1,50 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 import Logo from "../Icons/Logo/Logo";
 import TG from "../Icons/TG/TG";
 import VK from "../Icons/VK/VK";
 
 import "./Footer.css";
 
-function Footer() {
+function Footer({ store }) {
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    store.setCategory(category);
+    navigate("/");
+  };
+
   return (
     <footer className="footer-container flex-center-middle">
       <div className="footer">
         <div className="footer__categories">
           <div className="footer__title">{"Категории"}</div>
           <div className="footer__categories-group">
-            <div className="footer__category">{"Вино"}</div>
-            <div className="footer__category">{"Шампанское и игристое"}</div>
-            <div className="footer__category">{"Крепкий алкоголь"}</div>
-            <div className="footer__category">{"Пиво"}</div>
+            <div
+              onClick={() => handleCategoryClick("wine")}
+              className="footer__category"
+            >
+              {"Вино"}
+            </div>
+            <div
+              onClick={() => handleCategoryClick("champagne")}
+              className="footer__category"
+            >
+              {"Шампанское и игристое"}
+            </div>
+            <div
+              onClick={() => handleCategoryClick("strong")}
+              className="footer__category"
+            >
+              {"Крепкий алкоголь"}
+            </div>
+            <div
+              onClick={() => handleCategoryClick("beer")}
+              className="footer__category"
+            >
+              {"Пиво"}
+            </div>
           </div>
         </div>
         <div className="footer__contacts-group">
@@ -44,4 +73,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default observer(Footer);

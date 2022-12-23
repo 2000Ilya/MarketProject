@@ -4,3 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.market__top-group {
+  display: flex;
+  flex-direction: column;
+}

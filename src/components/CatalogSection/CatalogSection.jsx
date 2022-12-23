@@ -10,7 +10,9 @@ function CatalogSection({ sectionName, sectionProducts }) {
       <h1 className="catalog-section__title">{sectionName}</h1>
       <div className="catalog-section__products-group">
         {sectionProducts &&
-          sectionProducts.map((product) => <ProductItem {...product} />)}
+          sectionProducts.map((product) => (
+            <ProductItem key={product.id} {...product} />
+          ))}
       </div>
       <Link className="catalog-section__catalog-link" to={"/catalog"}>
         {"Перейти в каталог"}

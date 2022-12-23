@@ -5,13 +5,13 @@ import Tab from "./Tab/Tab";
 import "./Tabs.css";
 
 const tabs = [
-  { name: "Вино", id: 1 },
-  { name: "Шампанское и игристое", id: 2 },
-  { name: "Крепкий алкоголь", id: 3 },
-  { name: "Пиво", id: 4 },
+  { name: "Вино", category: "wine", id: 1 },
+  { name: "Шампанское и игристое", category: "champagne", id: 2 },
+  { name: "Крепкий алкоголь", category: "strong", id: 3 },
+  { name: "Пиво", category: "beer", id: 4 },
 ];
 
-function Tabs() {
+function Tabs({ changeCategory, searchName, changeSearchName }) {
   const [selectedTabIndex, setSelectedTabIndex] = useState(1);
 
   return (
@@ -19,6 +19,8 @@ function Tabs() {
       <div className="tabs">
         <div className="tabs__search-group">
           <input
+            value={searchName}
+            onChange={(event) => changeSearchName(event.target.value)}
             placeholder="Поиск по каталогу"
             className="tabs__search-product"
           />
@@ -27,7 +29,11 @@ function Tabs() {
         <div className="tabs-group">
           {tabs.map((tab) => (
             <Tab
-              selectTab={() => setSelectedTabIndex(tab.id)}
+              key={tab.id}
+              selectTab={() => {
+                setSelectedTabIndex(tab.id);
+                changeCategory(tab.category);
+              }}
               name={tab.name}
               isSelected={tab.id === selectedTabIndex}
             />

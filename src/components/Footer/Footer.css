@@ -40,6 +40,11 @@
   line-height: 2.1rem;
   color: #ffffff;
   display: inline-block;
+  cursor: pointer;
+}
+
+.footer__category:hover {
+  text-decoration: underline;
 }
 
 .footer__title {

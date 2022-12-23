@@ -21,3 +21,19 @@
   gap: 4rem;
   align-items: center;
 }
+
+.header__cart-container {
+  position: relative;
+}
+
+.header__cart-counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background: white;
+  color: #800101;
+  border-radius: 50%;
+  font-size: 2rem;
+  padding: 0 0.5rem;
+}

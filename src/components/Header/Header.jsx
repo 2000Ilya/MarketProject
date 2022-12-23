@@ -7,8 +7,9 @@ import Logo from "../Icons/Logo/Logo";
 
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
-function Header() {
+function Header({ store }) {
   return (
     <header className="header-container flex-center-middle">
       <div className="header">
@@ -18,7 +19,12 @@ function Header() {
         <NavBar />
         <div className="header__controls-group">
           <Link to={"/cart"}>
-            <Cart />
+            <div className="header__cart-container">
+              <Cart />
+              <span className="header__cart-counter">
+                {store.productsQuantity}
+              </span>
+            </div>
           </Link>
           <Like fill={"#ffffff"} />
           <Avatar />
@@ -28,4 +34,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default observer(Header);
