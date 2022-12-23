@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import marketStore from "./store";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -22,9 +27,9 @@ const Market = () => {
               path="/catalog"
               element={<CatalogPage store={marketStore} />}
             />
-            {/* </Route> */}
             <Route path="/cart" element={<CartPage />} />
             <Route path="/order" element={<OrderPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
         <Footer store={marketStore} />
