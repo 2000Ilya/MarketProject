@@ -1,67 +1,51 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import CartForm from "../../components/CartForm/CartForm";
 import CartItem from "../../components/CartItem/CartItem";
 import NavBack from "../../components/NavBack/NavBack";
 
 import "./CartPage.css";
 
-const cartProducts = [
-  {
-    name: "Charles Simon Brut Supreme, 0.75 л",
-    imgSrc: "champagne1.png",
-    price: 3690,
-    salePrice: 4100,
-    category: "champagne",
-    parameters: {
-      country: "Франция",
-      type: "Сухое",
-      toxicity: "12%",
-      volume: "0.75 л",
-    },
-  },
-  {
-    name: "Neft, black barrel, 0.7 л",
-    imgSrc: "strong1.png",
-    price: 3600,
-    salePrice: 6000,
-    category: "strong",
-    parameters: {
-      country: "Австрия",
-      type: "Классическая",
-      toxicity: "40%",
-      volume: "0.7 л",
-    },
-  },
-  {
-    name: "Corona Extra, 0.355 л",
-    imgSrc: "beer1.png",
-    price: 154,
-    salePrice: 220,
-    category: "beer",
-    parameters: {
-      country: "Мексика",
-      type: "Светлое",
-      toxicity: "4.5%",
-      volume: "0.355 л",
-    },
-  },
-];
-
-function CartPage({}) {
+const CartPage = observer(({ store }) => {
   return (
     <div className="cart-page">
       <div className="cart-page__content">
         <NavBack text={"Назад"} linkTo={"/"} />
-        <div className="cart-page__mid-group">
-          <div className="cart-page__products-group">
-            {cartProducts &&
-              cartProducts.map((product) => <CartItem {...product} />)}
+        {store.productsQuantity > 0 ? (
+          <div className="cart-page__mid-group">
+            <CartList
+              products={store.cartProducts}
+              addProduct={(id) => store.addCartProduct(id)}
+              deleteProduct={(id) => store.deleteCartProduct(id)}
+            />
+            <CartForm
+              quantity={store.productsQuantity}
+              resultPrice={store.resultPrice}
+            />
           </div>
-          <CartForm quantity={0} resultPrice={0} />
-        </div>
+        ) : (
+          <h1 className="catalog-section__title">{"Корзина пуста"}</h1>
+        )}
       </div>
     </div>
   );
-}
+});
+
+const CartList = ({ products, addProduct, deleteProduct }) => (
+  <div className="cart-page__products-group">
+    {products.map(
+      (product) =>
+        product.count > 0 && (
+          <CartItem
+            key={product.id}
+            {...product}
+            addProduct={() => addProduct(product.id)}
+            deleteProduct={() => deleteProduct(product.id)}
+            quantity={product.count}
+          />
+        )
+    )}
+  </div>
+);
 
 export default CartPage;

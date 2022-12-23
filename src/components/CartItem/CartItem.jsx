@@ -5,7 +5,16 @@ import ControlQuantity from "./ControlQuantity/ControlQuantity";
 import "./CartItem.css";
 import { priceStringBuilder } from "../../helpers/stringBuilders";
 
-function CartItem({ name, imgSrc, price, quantity = 1, parameters, category }) {
+function CartItem({
+  name,
+  imgSrc,
+  price,
+  quantity,
+  parameters,
+  category,
+  addProduct,
+  deleteProduct,
+}) {
   return (
     <div className="cart-item__container">
       <img
@@ -27,7 +36,11 @@ function CartItem({ name, imgSrc, price, quantity = 1, parameters, category }) {
           </div>
           <div className="cart-item__cost-container">
             <div className="cart-item__price">{priceStringBuilder(price)}</div>
-            <ControlQuantity quantity={quantity} />
+            <ControlQuantity
+              quantity={quantity}
+              addProduct={addProduct}
+              deleteProduct={deleteProduct}
+            />
             <div className="cart-item__price">
               {priceStringBuilder(price * quantity)}
             </div>

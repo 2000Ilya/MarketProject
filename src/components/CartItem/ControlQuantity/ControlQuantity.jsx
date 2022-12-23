@@ -8,7 +8,7 @@ function ControlQuantity({ quantity, addProduct, deleteProduct }) {
       <div
         className="control"
         onClick={() => {
-          addProduct();
+          deleteProduct();
         }}
       >
         {"—"}
@@ -17,7 +17,7 @@ function ControlQuantity({ quantity, addProduct, deleteProduct }) {
       <div
         className="control"
         onClick={() => {
-          deleteProduct();
+          addProduct();
         }}
       >
         {"+"}

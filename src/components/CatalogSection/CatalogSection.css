@@ -7,6 +7,8 @@
 }
 
 .catalog-section__title {
+  width: 116rem;
+  text-align: start;
   font-size: 3.2rem;
   line-height: 3.8rem;
   color: #800101;

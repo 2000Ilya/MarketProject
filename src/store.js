@@ -1,8 +1,8 @@
-import { action, computed, makeObservable, observable, reaction } from "mobx";
-import products from "./products";
+import { action, computed, makeObservable, observable } from "mobx";
+import productsBase from "./products";
 
 class MarketStore {
-  products = products;
+  _products = productsBase;
   // _cartProducts = [{ id: 1, count: 1 }];
   _cartProducts = [];
   _searchName = "";
@@ -13,6 +13,9 @@ class MarketStore {
       _category: observable,
       _searchName: observable,
       _cartProducts: observable,
+      _products: observable,
+      resultPrice: computed,
+      products: computed,
       searchName: computed,
       category: computed,
       productsFiltered: computed,
@@ -25,25 +28,48 @@ class MarketStore {
     });
   }
 
+  get resultPrice() {
+    let resultPrice = 0;
+    for (let i = 0; i < this._cartProducts.length; i++) {
+      const cartProduct = this._cartProducts[i];
+      for (let j = 0; j < this._products.length; j++) {
+        const product = this._products[j];
+        if (cartProduct.id === product.id) {
+          resultPrice += cartProduct.count * product.price;
+        }
+      }
+    }
+    return resultPrice;
+  }
+
   get cartProducts() {
-    return this._cartProducts.map((cartProduct) => {
-      const productIndex = products.find(
-        (product) => product.id === cartProduct.id && product.count > 0
-      );
-      return products[productIndex];
-    });
+    return this._products
+      .filter((product) => {
+        for (let i = 0; i < this._cartProducts.length; i++) {
+          if (this._cartProducts[i].id === product.id) {
+            return true;
+          }
+        }
+        return false;
+      })
+      .map((product) => {
+        for (let i = 0; i < this._cartProducts.length; i++) {
+          if (this._cartProducts[i].id === product.id) {
+            return { ...product, count: this._cartProducts[i].count };
+          }
+        }
+      });
   }
 
   get productsFiltered() {
-    console.log(this.searchName);
     if (this.searchName !== undefined && this.searchName.length > 0) {
-      return this.products.filter((product) => {
+      return this._products.filter((product) => {
         return product.name
           .toLowerCase()
           .includes(this.searchName.toLowerCase());
       });
     }
-    return this.products;
+    return this._products;
   }
 
   get productsQuantity() {
@@ -52,6 +78,10 @@ class MarketStore {
 
   get category() {
     return this._category;
+  }
+
+  get products() {
+    return this._products;
   }
 
   get searchName() {
@@ -68,20 +98,26 @@ class MarketStore {
   }
 
   addCartProduct(index) {
-    this._cartProducts.map((cartProduct) => {
-      if (cartProduct.id === index) {
-        if ("count" in cartProduct) {
-          cartProduct["count"] += 1;
-        } else {
-          cartProduct["count"] = 1;
+    if (this._cartProducts.some((product) => product.id === index)) {
+      this._cartProducts = this._cartProducts.map((cartProduct) => {
+        if (cartProduct.id === index) {
+          if ("count" in cartProduct) {
+            cartProduct["count"] += 1;
+          } else {
+            cartProduct["count"] = 1;
+          }
         }
-      }
-      return cartProduct;
-    });
+        console.log(cartProduct);
+        return cartProduct;
+      });
+    } else {
+      this._cartProducts.push({ id: index, count: 1 });
+      console.log({ id: index, count: 1 });
+    }
   }
 
   deleteCartProduct(index) {
-    this._cartProducts.map((cartProduct) => {
+    this._cartProducts = this._cartProducts.map((cartProduct) => {
       if (cartProduct.id === index) {
         if ("count" in cartProduct && cartProduct["count"] > 0) {
           cartProduct["count"] -= 1;

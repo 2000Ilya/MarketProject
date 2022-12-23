@@ -7,15 +7,26 @@ import "./CatalogPage.css";
 export const CatalogPage = observer(({ store }) => {
   return (
     <div className="catalog-container">
-      <Catalog products={store.products} />
+      <h1 className="catalog-section__title">{"Каталог"}</h1>
+      <Catalog
+        products={store.products}
+        addToCart={(index) => {
+          console.log(index);
+          store.addCartProduct(index);
+        }}
+      />
     </div>
   );
 });
 
-export const Catalog = ({ products }) => (
+export const Catalog = ({ products, addToCart }) => (
   <div className="catalog">
     {products.map((product, index) => (
-      <ProductItem key={index} {...product} />
+      <ProductItem
+        key={product.id}
+        {...product}
+        addToCart={() => addToCart(product.id)}
+      />
     ))}
   </div>
 );

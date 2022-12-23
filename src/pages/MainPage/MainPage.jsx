@@ -16,9 +16,16 @@ function MainPage({ store }) {
         searchName={store.searchName}
       />
       {store.searchName && store.searchName.length > 0 ? (
-        <Catalog products={store.productsFiltered} />
+        <div className="catalog-container">
+          <h1 className="catalog-section__title">{"Найденные товары"}</h1>
+          <Catalog
+            addToCart={(index) => store.addCartProduct(index)}
+            products={store.productsFiltered}
+          />
+        </div>
       ) : (
         <CatalogSection
+          addToCart={(index) => store.addCartProduct(index)}
           sectionName={categoryToSectionNameConverter(store.category)}
           sectionProducts={store.products.filter(
             (product) => product.category === store.category

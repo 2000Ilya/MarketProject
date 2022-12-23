@@ -55,7 +55,7 @@
   width: 24.8rem;
   display: flex;
   flex-direction: row;
-  gap: 3.2rem;
+  justify-content: space-between;
 }
 
 .cart-item__price {

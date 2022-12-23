@@ -27,7 +27,7 @@ const Market = () => {
               path="/catalog"
               element={<CatalogPage store={marketStore} />}
             />
-            <Route path="/cart" element={<CartPage />} />
+            <Route path="/cart" element={<CartPage store={marketStore} />} />
             <Route path="/order" element={<OrderPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

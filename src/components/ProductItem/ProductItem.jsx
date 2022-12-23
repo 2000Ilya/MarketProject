@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { priceStringBuilder } from "../../helpers/stringBuilders";
 import Button from "../Button/Button";
 import Like from "../Icons/Like/Like";
@@ -6,7 +7,17 @@ import Parameter from "../Parameter/Parameter";
 
 import "./ProductItem.css";
 
-function ProductItem({ name, imgSrc, price, salePrice, parameters, category }) {
+function ProductItem({
+  name,
+  imgSrc,
+  price,
+  salePrice,
+  parameters,
+  category,
+  id,
+  addToCart,
+}) {
+  const navigate = useNavigate();
   return (
     <div className="product-item__container">
       <div className="product-item__content-group">
@@ -38,8 +49,19 @@ function ProductItem({ name, imgSrc, price, salePrice, parameters, category }) {
         </div>
       </div>
       <div className="product-item__button-container">
-        <Button text={"В корзину"} />
-        <Button text={"Заказать"} />
+        <Button
+          onClick={() => {
+            addToCart();
+          }}
+          text={"В корзину"}
+        />
+        <Button
+          onClick={() => {
+            addToCart();
+            navigate("/cart");
+          }}
+          text={"Заказать"}
+        />
       </div>
     </div>
   );
