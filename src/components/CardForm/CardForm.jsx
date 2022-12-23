@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import formValidator from "../../helpers/formValidator";
 import Button from "../Button/Button";
@@ -7,12 +7,14 @@ import CardField from "./CardField/CardField";
 import "./CardForm.css";
 
 function CardForm({ handleField, form, clearStore }) {
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log(form);
     if (formValidator(form)) {
       clearStore();
       navigate("/MarketProject/order");
+    } else {
+      setError(true);
     }
   };
 
@@ -25,6 +27,7 @@ function CardForm({ handleField, form, clearStore }) {
             isSmall={false}
             handleField={(name, value) => handleField(name, value)}
             name={"card"}
+            placeholder={"0000000000000000"}
           />
           <div className="card-form__mid-group">
             <CardField
@@ -32,12 +35,14 @@ function CardForm({ handleField, form, clearStore }) {
               isSmall={true}
               handleField={(name, value) => handleField(name, value)}
               name={"due"}
+              placeholder={"00/00"}
             />
             <CardField
               label={"CVC"}
               isSmall={true}
               handleField={(name, value) => handleField(name, value)}
               name={"cvc"}
+              placeholder={"000"}
             />
           </div>
           <CardField
@@ -45,6 +50,7 @@ function CardForm({ handleField, form, clearStore }) {
             isSmall={false}
             handleField={(name, value) => handleField(name, value)}
             name={"cardHolder"}
+            placeholder={"ИМЯ ФАМИЛИЯ"}
           />
         </div>
         <img
@@ -53,6 +59,9 @@ function CardForm({ handleField, form, clearStore }) {
         />
       </div>
       <Button onClick={handleClick} text={"Оформить заказ"} />
+      {error !== null && error && (
+        <p className="card-form__error">{"Заполните форму корректно"}</p>
+      )}
     </div>
   );
 }

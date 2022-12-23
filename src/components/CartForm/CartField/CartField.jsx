@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./CartField.css";
 
-function CartField({ label, handleField, name }) {
+function CartField({ label, handleField, name, placeholder }) {
   const [value, setValue] = useState("");
   return (
     <div className="cart-field">
@@ -10,6 +10,7 @@ function CartField({ label, handleField, name }) {
         {label}
       </label>
       <input
+        placeholder={placeholder}
         className="cart-field__input"
         id="field"
         value={value}

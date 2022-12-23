@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./CardField.css";
 
-function CardField({ label, isSmall, handleField, name }) {
+function CardField({ label, isSmall, handleField, name, placeholder }) {
   const [value, setValue] = useState("");
   return (
     <div className={`card-field ${isSmall ? "card-field__small" : ""}`}>
@@ -10,6 +10,7 @@ function CardField({ label, isSmall, handleField, name }) {
         {label}
       </label>
       <input
+        placeholder={placeholder}
         className="card-field__input"
         id="field"
         value={value}
