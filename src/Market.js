@@ -22,14 +22,23 @@ const Market = () => {
         <div className="market__top-group">
           <Header store={marketStore} />
           <Routes>
-            <Route path="/" element={<MainPage store={marketStore} />} />
             <Route
-              path="/catalog"
+              path="/MarketProject"
+              element={<MainPage store={marketStore} />}
+            />
+            <Route
+              path="/MarketProject/catalog"
               element={<CatalogPage store={marketStore} />}
             />
-            <Route path="/cart" element={<CartPage store={marketStore} />} />
-            <Route path="/order" element={<OrderPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route
+              path="/MarketProject/cart"
+              element={<CartPage store={marketStore} />}
+            />
+            <Route path="/MarketProject/order" element={<OrderPage />} />
+            <Route
+              path="*"
+              element={<Navigate to="/MarketProject" replace />}
+            />
           </Routes>
         </div>
         <Footer store={marketStore} />

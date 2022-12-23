@@ -13,12 +13,12 @@ function Header({ store }) {
   return (
     <header className="header-container flex-center-middle">
       <div className="header">
-        <Link to={"/"}>
+        <Link to={"/MarketProject"}>
           <Logo />
         </Link>
         <NavBar />
         <div className="header__controls-group">
-          <Link to={"/cart"}>
+          <Link to={"/MarketProject/cart"}>
             <div className="header__cart-container">
               <Cart />
               <span className="header__cart-counter">

@@ -18,7 +18,10 @@ function CatalogSection({ sectionName, sectionProducts, addToCart }) {
             />
           ))}
       </div>
-      <Link className="catalog-section__catalog-link" to={"/catalog"}>
+      <Link
+        className="catalog-section__catalog-link"
+        to={"/MarketProject/catalog"}
+      >
         {"Перейти в каталог"}
       </Link>
     </div>

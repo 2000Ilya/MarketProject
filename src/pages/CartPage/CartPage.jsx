@@ -20,7 +20,7 @@ const CartPage = observer(({ store }) => {
   return (
     <div className="cart-page">
       <div className="cart-page__content">
-        <NavBack text={"Назад"} linkTo={"/"} />
+        <NavBack text={"Назад"} linkTo={"/MarketProject"} />
         {store.productsQuantity > 0 ? (
           <div className="cart-page__group">
             <div className="cart-page__mid-group">

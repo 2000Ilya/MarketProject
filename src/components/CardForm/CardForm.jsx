@@ -12,7 +12,7 @@ function CardForm({ handleField, form, clearStore }) {
     console.log(form);
     if (formValidator(form)) {
       clearStore();
-      navigate("/order");
+      navigate("/MarketProject/order");
     }
   };
 

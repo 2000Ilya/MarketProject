@@ -12,7 +12,7 @@ function Footer({ store }) {
 
   const handleCategoryClick = (category) => {
     store.setCategory(category);
-    navigate("/");
+    navigate("/MarketProject");
   };
 
   return (

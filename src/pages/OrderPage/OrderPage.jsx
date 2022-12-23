@@ -7,7 +7,7 @@ import "./OrderPage.css";
 function OrderPage() {
   return (
     <div className="order-page">
-      <NavBack linkTo={"/"} text={"Назад к каталогу"} />
+      <NavBack linkTo={"/MarketProject"} text={"Назад к каталогу"} />
       <h1 className="order-page__title">{"Вы оформили заказ!"}</h1>
       <div className="order-page__description">
         {"Ваш заказ можно отследить в личном кабинете по трекер - коду"}

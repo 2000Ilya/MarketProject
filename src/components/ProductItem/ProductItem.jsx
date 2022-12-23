@@ -58,7 +58,7 @@ function ProductItem({
         <Button
           onClick={() => {
             addToCart();
-            navigate("/cart");
+            navigate("/MarketProject/cart");
           }}
           text={"Заказать"}
         />
