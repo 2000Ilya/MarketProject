@@ -3,7 +3,6 @@ import productsBase from "./products";
 
 class MarketStore {
   _products = productsBase;
-  // _cartProducts = [{ id: 1, count: 1 }];
   _cartProducts = [];
   _searchName = "";
   _category = "wine";
@@ -125,6 +124,12 @@ class MarketStore {
       }
       return cartProduct;
     });
+  }
+
+  clear() {
+    this._cartProducts = [];
+    this._searchName = "";
+    this._category = "wine";
   }
 }
 
