@@ -6,9 +6,11 @@ class MarketStore {
   _cartProducts = JSON.parse(localStorage.getItem("_cartProducts")) || [];
   _searchName = JSON.parse(localStorage.getItem("_searchName")) || "";
   _category = JSON.parse(localStorage.getItem("_category")) || "wine";
+  _favProductsIds = JSON.parse(localStorage.getItem("_favProductsIds")) || [];
 
   constructor() {
     makeObservable(this, {
+      _favProductsIds: observable,
       _category: observable,
       _searchName: observable,
       _cartProducts: observable,
@@ -19,12 +21,27 @@ class MarketStore {
       category: computed,
       productsFiltered: computed,
       cartProducts: computed,
+      favProducts: computed,
+      favProductsIds: computed,
       productsQuantity: computed,
+      toggleFavProductIds: action,
       setCategory: action,
       changeSearchName: action,
       addCartProduct: action,
       deleteCartProduct: action,
     });
+  }
+
+  get favProducts() {
+    console.log(this._favProductsIds);
+    return this._products.filter((product) =>
+      this._favProductsIds.includes(product.id)
+    );
+  }
+
+  get favProductsIds() {
+    console.log(this._favProductsIds);
+    return this._favProductsIds;
   }
 
   get resultPrice() {
@@ -87,6 +104,21 @@ class MarketStore {
     return this._searchName;
   }
 
+  toggleFavProductIds(id) {
+    console.log(id);
+    if (!this._favProductsIds.includes(id)) {
+      this._favProductsIds = this._favProductsIds.concat([id]);
+    } else {
+      this._favProductsIds = this._favProductsIds.filter(
+        (productIndex) => productIndex !== id
+      );
+    }
+    localStorage.setItem(
+      "_favProductsIds",
+      JSON.stringify(this._favProductsIds)
+    );
+  }
+
   setCategory(category) {
     this._category = category;
     localStorage.setItem("_category", JSON.stringify(category));
@@ -111,7 +143,7 @@ class MarketStore {
       });
       localStorage.setItem("_cartProducts", JSON.stringify(this._cartProducts));
     } else {
-      this._cartProducts.push({ id: index, count: 1 });
+      this._cartProducts = this._cartProducts.concat([{ id: index, count: 1 }]);
       localStorage.setItem("_cartProducts", JSON.stringify(this._cartProducts));
     }
   }

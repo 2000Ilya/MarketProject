@@ -22,6 +22,10 @@ function MainPage({ store }) {
           <Catalog
             addToCart={(index) => store.addCartProduct(index)}
             products={store.productsFiltered}
+            toggleFav={(index) => {
+              store.toggleFavProductIds(index);
+            }}
+            favProductsIds={store.favProductsIds}
           />
         </div>
       ) : (
@@ -31,6 +35,10 @@ function MainPage({ store }) {
           sectionProducts={store.products.filter(
             (product) => product.category === store.category
           )}
+          toggleFav={(index) => {
+            store.toggleFavProductIds(index);
+          }}
+          favProductsIds={store._favProductsIds}
         />
       )}
     </div>
