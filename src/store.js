@@ -76,7 +76,6 @@ class MarketStore {
   }
 
   get category() {
-    console.log(this._category);
     return this._category;
   }
 

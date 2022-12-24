@@ -11,7 +11,6 @@ export const CatalogPage = observer(({ store }) => {
       <Catalog
         products={store.products}
         addToCart={(index) => {
-          console.log(index);
           store.addCartProduct(index);
         }}
       />
