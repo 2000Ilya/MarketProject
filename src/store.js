@@ -3,9 +3,9 @@ import productsBase from "./products";
 
 class MarketStore {
   _products = productsBase;
-  _cartProducts = [];
-  _searchName = "";
-  _category = "wine";
+  _cartProducts = JSON.parse(localStorage.getItem("_cartProducts")) || [];
+  _searchName = JSON.parse(localStorage.getItem("_searchName")) || "";
+  _category = JSON.parse(localStorage.getItem("_category")) || "wine";
 
   constructor() {
     makeObservable(this, {
@@ -76,6 +76,7 @@ class MarketStore {
   }
 
   get category() {
+    console.log(this._category);
     return this._category;
   }
 
@@ -88,12 +89,13 @@ class MarketStore {
   }
 
   setCategory(category) {
-    console.log(category);
     this._category = category;
+    localStorage.setItem("_category", JSON.stringify(category));
   }
 
   changeSearchName(searchName) {
     this._searchName = searchName;
+    localStorage.setItem("_searchName", JSON.stringify(searchName));
   }
 
   addCartProduct(index) {
@@ -106,12 +108,12 @@ class MarketStore {
             cartProduct["count"] = 1;
           }
         }
-        console.log(cartProduct);
         return cartProduct;
       });
+      localStorage.setItem("_cartProducts", JSON.stringify(this._cartProducts));
     } else {
       this._cartProducts.push({ id: index, count: 1 });
-      console.log({ id: index, count: 1 });
+      localStorage.setItem("_cartProducts", JSON.stringify(this._cartProducts));
     }
   }
 
@@ -124,12 +126,14 @@ class MarketStore {
       }
       return cartProduct;
     });
+    localStorage.setItem("_cartProducts", JSON.stringify(this._cartProducts));
   }
 
   clear() {
     this._cartProducts = [];
     this._searchName = "";
     this._category = "wine";
+    localStorage.clear();
   }
 }
 
